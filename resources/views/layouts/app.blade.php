@@ -9,16 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Restaurant</title>
+    <title>Admin Restourant</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+     
+    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -28,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-       @include('layouts/sidebar')
+        @include('layouts/sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -38,7 +39,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('layouts/navbar')
+               @include('layouts/navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -46,14 +47,11 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">ADMIN</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">Pegawai</h1>
                     </div>
-
-                   @yield('content')
+                    @yield('content')
                     <!-- Content Row -->
-                  
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -62,7 +60,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-           @include('layouts/footer')
+            
             <!-- End of Footer -->
 
         </div>
@@ -70,6 +68,8 @@
 
     </div>
     <!-- End of Page Wrapper -->
+
+    @include('layouts/footer')
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -90,14 +90,15 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="/sesi/logout">Logout</a>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Bootstrap core JavaScript-->
-    <script src="">{{asset('vendor/jquery/jquery.min.js')}}</script>
+    
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -118,6 +119,7 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+
 </body>
 
 </html>

@@ -2,6 +2,7 @@
 @section('content')
 
 
+
 <div class="container mt-5">
         <h1>Tambah Pegawai</h1>
         <form action="{{ route('pegawai.store') }}" method="POST">
@@ -22,4 +23,5 @@
             <a href="{{ route('pegawai.index') }}" class="btn btn-secondary">Batal</a>
         </form>
     </div>
+
     @endsection

@@ -13,19 +13,19 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
-    <a class="nav-link" href="{{route('dashboard')}}">
+    <a class="nav-link" href="{{route('dashboard.index')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="{{route('dashboard')}}">
+    <a class="nav-link" href="{{route('product.index')}}">
         <i class="fas fa-fw fa-table"></i>
         <span>Makanan</span></a>
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="{{route('dashboard')}}">
+    <a class="nav-link" href="{{route('minuman.index')}}">
         <i class="fas fa-fw fa-table"></i>
         <span>Minuman</span></a>
 </li>
@@ -37,15 +37,15 @@
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="{{route('dashboard')}}">
+    <a class="nav-link" href="{{route('merchandise.index')}}">
         <i class="fas fa-fw fa-table"></i>
         <span>Merchandise</span></a>
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="{{route('dashboard')}}">
+    <a class="nav-link" href="{{route('testimonials.index')}}">
         <i class="fas fa-fw fa-table"></i>
-        <span>Testimoni</span></a>
+        <span>Testimonial</span></a>
 </li>
 <!-- Divider -->
 

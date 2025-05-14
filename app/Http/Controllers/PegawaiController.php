@@ -13,8 +13,8 @@ class PegawaiController extends Controller
     public function index()
     {
         //
-        $pegawai = Pegawai::all();
-        return view('pegawai.index', ['pegawai'=>$pegawai]);
+        $pegawais = Pegawai::all();
+        return view('pegawai.index', compact('pegawais'));
     }
 
     /**
@@ -33,21 +33,20 @@ class PegawaiController extends Controller
     {
         //
         $request->validate([
-            'kodepegawai' => 'required|unique:pegawai',
-            'namapegawai' => 'required',
-            'kerja_bagian' => 'required',
+            'nama' => 'required|string|max:255',
+            'divisi' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
         ]);
-    
+
         Pegawai::create($request->all());
-    
-        return redirect()->route('pegawai.index')
-                         ->with('success', 'Pegawai berhasil ditambahkan.');
+
+        return redirect()->route('pegawai.index')->with('success', 'Pegawai berhasil ditambahkan.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pegawai $pegawai)
+    public function show(string $id)
     {
         //
     }
@@ -55,60 +54,40 @@ class PegawaiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         //
         $pegawai = Pegawai::findOrFail($id);
-        
         return view('pegawai.edit', compact('pegawai'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
         //
-        $request->validate([
-            'kodepegawai' => 'required|unique:pegawai,kodepegawai,'.$id.',kodepegawai',
-            'namapegawai' => 'required',
-            'kerja_bagian' => 'required'
-        ]);
-
-        // Cari data pegawai yang akan diupdate
         $pegawai = Pegawai::findOrFail($id);
-        
-        // Update data
-        $pegawai->update([
-            'kodepegawai' => $request->kodepegawai,
-            'namapegawai' => $request->namapegawai,
-            'kerja_bagian' => $request->kerja_bagian
-        ]);
 
-        // Redirect ke halaman daftar pegawai dengan pesan sukses
-        return redirect()->route('pegawai.index')
-                         ->with('success', 'Data pegawai berhasil diperbarui');
+        $pegawai->update([
+            'nama' => $request->nama,
+            'divisi' => $request->divisi,
+            'alamat' => $request->alamat,
+        ]);
+    
+        return redirect()->route('pegawai.index')->with('success', 'Data pegawai berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
         //
-        $pegawai = Pegawai::find($id);
-
-        // Jika data tidak ditemukan, kembalikan response error
-        if (!$pegawai) {
-            return redirect()->route('pegawai.index')
-                             ->with('error', 'Pegawai tidak ditemukan.');
-        }
-
-        // Hapus data pegawai
+        $pegawai = Pegawai::findOrFail($id);
         $pegawai->delete();
 
-        // Redirect ke halaman index dengan pesan sukses
-        return redirect()->route('pegawai.index')
-                         ->with('success', 'Pegawai berhasil dihapus.');
+        return redirect()->route('pegawai.index')->with('success', 'Pegawai berhasil dihapus.');
+
     }
 }

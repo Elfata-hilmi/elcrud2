@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pegawai', function (Blueprint $table) {
-            $table->id(); // Kolom primary key default
-            $table->string('kodepegawai')->unique(); // Tambahkan kolom kodepegawai
-            $table->string('namapegawai');
-            $table->string('kerja_bagian');
+        Schema::create('merchandises', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
+            $table->string('kategori');
+            $table->integer('stok');
+            $table->decimal('harga', 10, 2);
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pegawai');
+        Schema::dropIfExists('merchandises');
     }
 };
